@@ -26,7 +26,7 @@ function App() {
       </div>
       <div style={{ height: "66%" }} id='Box' className="chat-container">
         {chat.map((e, i) => {
-          return <div key={i} className="message">{e}</div>
+          return <div key={i} className="w-full flex items-center justify-end p-2 text-white px-3"><div style={{ maxWidth: "60%", borderRadius: "20px 20px 0px 20px" }} className='bg-blue-600 p-2'>{e}</div></div>
         })}
       </div>
       <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input value={newchat} onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" /><GrAttachment className='ml-2 text-xl' /><BiSend onClick={(e) => { if (newchat !== "") { setchat(chat.concat(newchat)); setnewchat(""); scrollToBottom("Box") } }} className='ml-4 text-xl' /></div></div>

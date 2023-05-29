@@ -26,11 +26,6 @@
     scroll-behavior: smooth;
 }
 
-.message {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
 .input input {
   border: none;
   width: 80%;
