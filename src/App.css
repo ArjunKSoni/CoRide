@@ -23,6 +23,7 @@
   flex-direction: column;
     height: 70vh;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .message {
