@@ -7,6 +7,7 @@ import { GrAttachment } from 'react-icons/gr';
 
 function App() {
   const [chat, setchat] = useState([])
+  const [newchat, setnewchat] = useState("")
   return (
     <div style={{ backgroundColor: "#f3efea", height: "100vh" }} className="main">
       <div style={{ height: "19%" }} className=' sticky w-screen'>
@@ -21,11 +22,11 @@ function App() {
         <hr />
       </div>
       <div style={{ height: "66%" }} className="chat-container bg-green-400">
-        {chat.map((e) => {
-          return <div className="message">{e}</div>
+        {chat.map((e, i) => {
+          return <div key={i} className="message">{e}</div>
         })}
       </div>
-      <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input type="text" placeholder='Reply to @Rohit Yadav' /><GrAttachment className='ml-2 text-xl' /><BiSend className='ml-4 text-xl' /></div></div>
+      <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} defaultValue={""} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" /><GrAttachment className='ml-2 text-xl' /><BiSend onClick={(e) => { setchat(chat.concat(newchat)); setnewchat("") }} className='ml-4 text-xl' /></div></div>
     </div >
   );
 }
