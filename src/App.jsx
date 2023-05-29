@@ -25,7 +25,7 @@ function App() {
           return <div className="message">{e}</div>
         })}
       </div>
-      <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input type="text" placeholder='Reply to @Rohit Yadav' /><GrAttachment className='ml-2 text-xl' /><BiSend className='ml-2 text-xl' /></div></div>
+      <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input type="text" placeholder='Reply to @Rohit Yadav' /><GrAttachment className='ml-2 text-xl' /><BiSend className='ml-4 text-xl' /></div></div>
     </div >
   );
 }
