@@ -27,7 +27,7 @@ function App() {
         </div>
         <hr />
       </div>
-      <div style={{ height: "66%" }} id='Box' className="chat-container">
+      <div style={{ height: "66%", marginBottom: "12px" }} id='Box' className="chat-container">
         {chat.map((e, i) => {
           return <div key={i} className="w-full flex items-center justify-end p-2 text-white px-3"><div style={{ maxWidth: "60%", borderRadius: "20px 20px 0px 20px" }} className='bg-blue-600 p-2'>{e}</div></div>
         })}
