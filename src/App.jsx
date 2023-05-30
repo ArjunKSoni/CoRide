@@ -16,7 +16,7 @@ function App() {
   const [newchat, setnewchat] = useState("")
   return (
     <div style={{ backgroundColor: "#f3efea", height: "100vh" }} className="main">
-      <div style={{ height: "19%" }} className=' sticky w-screen'>
+      <div style={{ height: "19vh" }} className=' sticky w-screen'>
         <div className='chat-heading p-3'>
           <div className='flex head-text items-center justify-between'><BsArrowLeftShort className='text-3xl mt-1' /> Trip 1</div>
           <BiEdit className='text-xl mt-1 text-gray-600' />
@@ -27,12 +27,12 @@ function App() {
         </div>
         <hr />
       </div>
-      <div style={{ height: "66%", marginBottom: "12px" }} id='Box' className="chat-container">
+      <div style={{ height: "66vh", marginBottom: "12px" }} id='Box' className="chat-container">
         {chat.map((e, i) => {
           return <div key={i} className="w-full flex items-center justify-end p-2 text-white px-3"><div style={{ maxWidth: "60%", borderRadius: "20px 20px 0px 20px" }} className='bg-blue-600 p-2'>{e}</div></div>
         })}
       </div>
-      <div style={{ height: "15%" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input id='input' value={newchat} onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" /><GrAttachment className='ml-2 text-xl' /><BiSend onClick={(e) => { if (newchat !== "") { setchat(chat.concat(newchat)); setnewchat(""); scrollToBottom("Box"); infocus() } }} className='ml-4 text-xl' /></div></div>
+      <div style={{ height: "15vh" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'><div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'><input id='input' value={newchat} onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" /><GrAttachment className='ml-2 text-xl' /><BiSend onClick={(e) => { if (newchat !== "") { setchat(chat.concat(newchat)); setnewchat(""); scrollToBottom("Box"); infocus() } }} className='ml-4 text-xl' /></div></div>
     </div >
   );
 }
