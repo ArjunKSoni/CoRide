@@ -73,7 +73,7 @@ function App() {
           <div className='text-center'>Loading chats...</div>
         </div>
       </div>
-      <div style={{ height: "15vh" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'>
+      <div style={{ height: "15vh" }} className='absolute px-4 py-2 flex items-center justify-center bottom-0 left-0  w-screen z-20'>
         <div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'>
           <input id='input' value={newchat} onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" />
           <GrAttachment className='ml-2 text-xl' />
