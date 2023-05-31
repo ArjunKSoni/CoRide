@@ -6,8 +6,6 @@ import { GrAttachment } from 'react-icons/gr';
 import Axios from "axios"
 
 function App() {
-  const date = new Date;
-  const [render, setrender] = useState(false)
   const [chat, setchat] = useState([])
   const [data, setdata] = useState([])
   const [newchat, setnewchat] = useState("")
@@ -20,8 +18,7 @@ function App() {
           "Content-Type": "application/json"
         },
       })
-      let data = await apicall.json().then(data => setdata(data))
-      // await setdata(data)
+      let data = await apicall.json().then((data) => { setdata(data); setchat(data.chats) })
     }
     catch (error) {
       console.log(error);
@@ -31,16 +28,8 @@ function App() {
   useEffect(() => {
     dataChat();
     console.log(data.chats);
-    setchat(data.chats)
     scrollToBottom("Box")
-
   }, [])
-  // setTimeout(function () {
-  //   setrender(!render)
-  //   console.log(render)
-  // }, 1000);
-  // console.log(data.chats);
-
 
   const infocus = () => {
     document.getElementById("input").focus()
@@ -63,7 +52,7 @@ function App() {
       </div>
       <div style={{ height: "66vh", marginBottom: "12px" }} id='Box' className="chat-container">
         <div className='w-full'>
-          {data.chats?.map((e, i) => {
+          {chat?.map((e, i) => {
             return (e.sender.image !== "user" ?
               <div key={i} className='p-2 flex gap-1'>
                 <div className='rounded-full overflow-hidden' style={{ width: "20px", height: "20px" }}>
