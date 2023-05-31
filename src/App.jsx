@@ -28,7 +28,6 @@ function App() {
 
   useEffect(() => {
     dataChat(page);
-    console.log(data.chats);
   }, [])
 
   const scrolled = (e) => {
