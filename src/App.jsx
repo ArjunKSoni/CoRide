@@ -6,19 +6,21 @@ import { GrAttachment } from 'react-icons/gr';
 import Axios from "axios"
 
 function App() {
+  const [page, setpage] = useState(0);
   const [chat, setchat] = useState([])
   const [data, setdata] = useState([])
   const [newchat, setnewchat] = useState("")
 
-  const dataChat = async () => {
+  const dataChat = async (i) => {
     try {
-      const apicall = await fetch(`https://3.111.128.67/assignment/chat?page=0`, {
+      const apicall = await fetch(`https://3.111.128.67/assignment/chat?page=${i}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json"
         },
       })
-      let data = await apicall.json().then((data) => { setdata(data); setchat(data.chats) })
+      await apicall.json().then((res) => { if (page === 0) { setdata(res) }; setchat(chat.concat(res.chats)) })
+      setpage(page + 1)
     }
     catch (error) {
       console.log(error);
@@ -26,18 +28,19 @@ function App() {
   }
 
   useEffect(() => {
-    dataChat();
+    dataChat(page);
     console.log(data.chats);
-    scrollToBottom("Box")
   }, [])
+
+  const scrolled = (e) => {
+    const bottom = e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+    if (bottom) { dataChat(page) }
+  }
 
   const infocus = () => {
     document.getElementById("input").focus()
   }
-  const scrollToBottom = (id) => {
-    const element = document.getElementById(id);
-    element.scrollTop = element.scrollHeight;
-  }
+
   return (
     <div style={{ backgroundColor: "#f3efea", height: "100vh" }} className="main">
       <div style={{ height: "19vh" }} className=' sticky w-screen'>
@@ -50,8 +53,8 @@ function App() {
           <BiDotsVerticalRounded className='text-2xl mt-1' />
         </div>
       </div>
-      <div style={{ height: "66vh", marginBottom: "12px" }} id='Box' className="chat-container">
-        <div className='w-full'>
+      <div style={{ height: "66vh", marginBottom: "12px" }} onScroll={scrolled} id='Box' className="chat-container">
+        <div className='w-full'  >
           {chat?.map((e, i) => {
             return (e.sender.image !== "user" ?
               <div key={i} className='p-2 flex gap-1'>
@@ -69,13 +72,14 @@ function App() {
               </div>
             )
           })}
+          <div className='text-center'>Loading chats...</div>
         </div>
       </div>
       <div style={{ height: "15vh" }} className='absolute p-4 flex items-center justify-center bottom-0 left-0  w-screen z-20'>
         <div style={{ width: "100%" }} className='bg-white input flex items-center justify-center py-1 rounded px-2'>
           <input id='input' value={newchat} onChange={(e) => { setnewchat(e.target.value) }} type="text" placeholder="Reply to @Rohit Yadav" />
           <GrAttachment className='ml-2 text-xl' />
-          <BiSend onClick={(e) => { if (newchat !== "") { setchat(chat.concat({ message: newchat, sender: { image: "user" } })); setnewchat(""); scrollToBottom("Box"); infocus() } }} className='ml-4 text-xl' />
+          <BiSend onClick={(e) => { if (newchat !== "") { setchat(chat.concat({ message: newchat, sender: { image: "user" } })); setnewchat(""); infocus() } }} className='ml-4 text-xl' />
         </div>
       </div>
     </div >
