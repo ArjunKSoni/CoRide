@@ -1,9 +1,8 @@
 import './App.css';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import { BiEdit, BiDotsVerticalRounded, BiSend } from 'react-icons/bi';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GrAttachment } from 'react-icons/gr';
-import Axios from "axios"
 
 function App() {
   const [page, setpage] = useState(0);
