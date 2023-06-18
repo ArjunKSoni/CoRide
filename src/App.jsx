@@ -12,7 +12,7 @@ function App() {
 
   const dataChat = async (i) => {
     try {
-      const apicall = await fetch(`https://3.111.128.67/assignment/chat?page=${i}`, {
+      const apicall = await fetch(`https://qa.corider.in/assignment/chat?page=${i}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json"
